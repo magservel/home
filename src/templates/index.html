@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="Magali Servel's personnal page">
+  <meta name="author" content="Magali Servel">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/skeleton.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/customize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+
+  <!-- Font-Awesome
+  -------------------------------------------------- -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+    <div class="container">
+     <section class="header">
+         <div class="row">
+             <div class="nine columns">
+                        <h1>Magali Servel</h1>
+                        <h2>Computer science engineer</h2>
+                    </div>
+                    <div class="three columns">
+                        <img class="rounded" src="{{ url_for('static',filename='images/self.jpeg') }}">
+                    </div>
+      </div>
+    </section>
+
+    <div class="navbar-spacer"></div>
+        <nav class="navbar">
+          <div class="container">
+            <ul class="navbar-list">
+              <li class="navbar-item"><a class="navbar-link" href="#project">Projects</a></li>
+              <li class="navbar-item"><a class="navbar-link" href="#experience">Experience</a></li>
+              <li class="navbar-item"><a class="navbar-link" href="#education">Education</a></li>
+
+              <li class="navbar-item right"><a class="navbar-link" href="https://github.com/magservel" target="_blank"><i class="fab fa-github"></i></a></li>
+              <li class="navbar-item"><a class="navbar-link" href="https://www.linkedin.com/in/magali-servel/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+              <li class="navbar-item"><a class="navbar-link" href="{{ url_for('static',filename='files/MagaliServel_CV.pdf') }}" target="_blank"><i class="fas fa-download"></i></a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+</body>
+</html>
