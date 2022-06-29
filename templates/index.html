@@ -2,65 +2,66 @@
 <html lang="en">
 <head>
 
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="Magali Servel's personnal page">
-  <meta name="author" content="Magali Servel">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/skeleton.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/customize.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
-
-  <!-- Font-Awesome
-  -------------------------------------------------- -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  {% include 'head.html' %}
 
 </head>
 <body>
-    <div class="container">
-     <section class="header">
-         <div class="row">
-             <div class="nine columns">
-                        <h1>Magali Servel</h1>
-                        <h2>Computer science engineer</h2>
-                    </div>
-                    <div class="three columns">
-                        <img class="rounded" src="{{ url_for('static',filename='images/self.jpeg') }}">
-                    </div>
+  <div class="container">
+    <header class="header">
+      <div class="row">
+        <div class="nine columns">
+          <h1>Magali Servel</h1>
+          <h2>Computer science engineer</h2>
+        </div>
+        <div class="three columns">
+          <img class="rounded" src="{{ url_for('static',filename='images/self.jpeg') }}">
+        </div>
       </div>
-    </section>
+    </header>
 
     <div class="navbar-spacer"></div>
-        <nav class="navbar">
-          <div class="container">
-            <ul class="navbar-list">
-              <li class="navbar-item"><a class="navbar-link" href="#project">Projects</a></li>
-              <li class="navbar-item"><a class="navbar-link" href="#experience">Experience</a></li>
-              <li class="navbar-item"><a class="navbar-link" href="#education">Education</a></li>
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a class="navbar-link" href="#project">Projects</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="#experience">Experiences</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="#education">Education</a></li>
 
-              <li class="navbar-item right"><a class="navbar-link" href="https://github.com/magservel" target="_blank"><i class="fab fa-github"></i></a></li>
-              <li class="navbar-item"><a class="navbar-link" href="https://www.linkedin.com/in/magali-servel/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-              <li class="navbar-item"><a class="navbar-link" href="{{ url_for('static',filename='files/MagaliServel_CV.pdf') }}" target="_blank"><i class="fas fa-download"></i></a></li>
-            </ul>
-          </div>
-        </nav>
-    </div>
+          <li class="navbar-item right" title="Github">
+            <a class="navbar-link" href="https://github.com/magservel" target="_blank"> <i class="fab fa-github"></i></a>
+          </li>
+          <li class="navbar-item" title="LinkedIn">
+            <a class="navbar-link" href="https://www.linkedin.com/in/magali-servel/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          </li>
+          <li class="navbar-item" title="CV PDF in french">
+            <a class="navbar-link" href="{{ url_for('static',filename='files/MagaliServel_CV.pdf') }}" target="_blank"><i class="fas fa-download"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    {#
+    <section class="projects">
+      <a class="button" href="{{ url_for('gol') }}">Game of life</a>
+    </section>
+    #}
+
+    <section class="education">
+      <h4>Education</h4>
+      <div class="row">
+        <div class="two columns" style="text-align: right;">2012 -- 2017</div>
+        <div class="ten columns"><strong>Computer science engineer degree</strong>, <em>Polytech</em>, Marseille <br>
+          Critical and embedded systems <br>
+          <strong>Erasmus program (1 year)</strong>, Articificial intelligence, <em>ITC Uppsala</em>, Sweden.
+        </div>
+      </div>
+      <div class="row">
+        <div class="two columns" style="text-align: right;">2012</div>
+        <div class="ten columns"><strong>Baccalauréat option Sciences </strong>, <em>Nevers Highschool</em>, Montpellier.
+        </div>
+      </div>
+    </section>
+  </div>
+
 </body>
 </html>

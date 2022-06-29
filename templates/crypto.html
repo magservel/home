@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <header class="project">
+    <h4><a href="{{ url_for('home') }}"><i class="fas fa-arrow-left"></i></a> BTC market </h4>
+    </header>
+
+        <div><canvas id="btc"></canvas></div>
+
+
+</div>
+
+</body>
+<script>
+
+      var chart = new Chart(document.getElementById("btc"), {
+          type: 'line',
+          data: {
+            labels: [{% for d in data %} new Date({{ d.date }}*1000).toLocaleString(), {% endfor %}],
+            datasets: [
+              {
+                label: "BTC",
+                data: [{% for d in data %} {{ d.high }}, {% endfor %}],
+              },
+            ]
+          },
+          options: {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: 'BTC/USDT value'
+            }
+          }
+      });
+
+
+
+            </script>
+</html>

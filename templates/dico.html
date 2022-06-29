@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'head.html' %}
+  <style>
+    #addEntryForm {
+      padding: .5rem;
+      margin: .5rem;
+      font-size: 90%;
+      white-space: nowrap;
+      background: #F1F1F1;
+      border: 1px solid #E1E1E1;
+      border-radius: 4px;
+    }
+    #entrySearch {
+      margin: 0;
+    }
+    input, button {
+      margin: 0;
+    }
+    #francais tbody tr:nth-child(odd) {
+      background-color: #b3d1ff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="row">
+        <div class="one-half column">
+          <h3>Dictionnaire des anglissismes</h3>
+        </div>
+        <div class="one-half column">
+          <button id="addEntryButton" class="button"> + Proposer une entrée </button>
+        </div>
+      </div>
+      
+      <form id="addEntryForm" method="post" action="/dico/newentry" style="display:none;">
+        <div class="row">
+          <div class="one-third column">
+            <input class="u-full-width" type="text" placeholder="anglissisme" name="ang" required>
+          </div>
+          <div class="one-third column">
+            <input class="u-full-width" type="text" placeholder="traductions (séparées par une virgule)" name="fra" >
+          </div>
+          <div class="one-third column">
+            <input class="button-primary" type="submit" value="Envoyer">
+            <input class="button" type="reset" value="Effacer">
+          </div>
+        </div>
+      </form>
+    </header>
+    
+    <div>
+      {# <form id="entrySearch">
+        <input type="text" placeholder="Rechercher" id="search">
+        <button class="button" type="search" disabled> <i class='fas fa-search'></i> </button>
+      </form>
+        #}
+
+    <form id="setEntryForm" method="post" action="/dico/setentry" style="display:none;">
+        <div class="row">
+          <div class="one-third column">
+            <input class="u-full-width" type="text" name="ang" required>
+          </div>
+          <div class="one-third column">
+            <input class="u-full-width" type="text" name="fra">
+          </div>
+          <div class="one-third column">
+            <input class="button-primary" type="submit" value="Envoyer">
+            <input class="button" type="reset" value="Effacer">
+          </div>
+        </div>
+      </form>
+      <table class="u-full-width" id="francais">
+        <tbody>
+          {% for ang, fra in entries.items() %}
+          <tr>
+            <td><b>{{ ang }}</b></td>
+            <td>{{ fra | join(", ") }}</td>
+            <td><i id="setEntryLink" title="Proposer une modification" onclick="onSetEntry('{{ ang }}', {{ fra }})" class="fa-solid fa-pen-to-square"></i></td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+<script>
+  const add_form = document.getElementById("addEntryForm");
+  const btn = document.getElementById("addEntryButton");
+  btn.onclick = function() {
+    if(add_form.style.display === "none"){
+      add_form.style.display = "block";
+      btn.innerText = "- Masquer le formulaire";
+    } else {
+      add_form.style.display = "none";
+      btn.innerText = "+ Proposer une entrée";
+    }
+  };
+  function onSetEntry(ang, fra) {
+    var modif = prompt("Proposer une modification pour " + ang + " (séparer les traduction par des virgules.", fra);
+    console.log(modif);
+    fetch("/dico/setentry", {
+        method: "POST",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: "ang=" + ang + "&fra=" + modif
+    }).then( res => {
+        console.log("succes");
+    });
+  };
+</script>
+</html>
